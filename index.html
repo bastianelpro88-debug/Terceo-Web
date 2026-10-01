@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TERCEO | Oficial</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #090909;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(9, 9, 9, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #222;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ff2b2b;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 120px 20px 60px;
+
+            background:
+                radial-gradient(circle at center, #2b0a0a 0%, #090909 55%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 12vw, 130px);
+            font-weight: 1000;
+            letter-spacing: 5px;
+
+            text-shadow:
+                0 0 15px rgba(255, 40, 40, 0.5);
+        }
+
+        .hero h1 span {
+            color: #ff3030;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: #bdbdbd;
+            font-size: 20px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 35px;
+
+            padding: 15px 30px;
+
+            background: #ff3030;
+            color: white;
+
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.25s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: #ff4545;
+        }
+
+        /* SECTIONS */
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 45px;
+        }
+
+        /* SOCIAL CARDS */
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .social-card {
+            background: #121212;
+            border: 1px solid #242424;
+
+            border-radius: 20px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            transition: 0.25s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-8px);
+            border-color: #444;
+        }
+
+        .social-icon {
+            font-size: 55px;
+            margin-bottom: 18px;
+        }
+
+        .social-card h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .social-card p {
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .social-button {
+            display: inline-block;
+
+            padding: 12px 22px;
+
+            color: white;
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .youtube {
+            background: #ff0000;
+        }
+
+        .youtube:hover {
+            background: #cc0000;
+        }
+
+        .discord {
+            background: #5865f2;
+        }
+
+        .discord:hover {
+            background: #4752c4;
+        }
+
+        .kick {
+            background: #53d11f;
+            color: #071000;
+        }
+
+        .kick:hover {
+            background: #69e933;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #101010;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .about p {
+            color: #aaa;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* LINKS */
+
+        .links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .link-button {
+            color: white;
+            text-decoration: none;
+            background: #1b1b1b;
+            border: 1px solid #333;
+
+            padding: 12px 20px;
+            border-radius: 10px;
+
+            transition: 0.2s;
+        }
+
+        .link-button:hover {
+            background: #292929;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+
+            border-top: 1px solid #222;
+
+            color: #777;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+        <div class="navbar">
+
+            <div class="logo">
+                <span>TER</span>CEO
+            </div>
+
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#redes">Redes</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+
+    <main id="inicio">
+
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <h1>TER<span>CEO</span></h1>
+
+                <p>
+                    Contenido, streams y comunidad.
+                </p>
+
+                <a href="#redes" class="hero-button">
+                    🔥 VER REDES
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- REDES -->
+
+        <section id="redes">
+
+            <h2>🌐 Redes de TERCEO</h2>
+
+            <p class="subtitle">
+                Encuentra todo el contenido y la comunidad.
+            </p>
+
+
+            <div class="social-grid">
+
+                <!-- YOUTUBE -->
+
+                <div class="social-card">
+
+                    <div class="social-icon">
+                        ▶️
+                    </div>
+
+                    <h3>YouTube</h3>
+
+                    <p>
+                        Videos y contenido de TERCEO.
+                    </p>
+
+                    <a
+                        class="social-button youtube"
+                        href="https://www.youtube.com/@terceo-k3s"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver YouTube
+                    </a>
+
+                </div>
+
+
+                <!-- DISCORD -->
+
+                <div class="social-card">
+
+                    <div class="social-icon">
+                        💬
+                    </div>
+
+                    <h3>Discord</h3>
+
+                    <p>
+                        Únete a la comunidad oficial de TERCEO.
+                    </p>
+
+                    <a
+                        class="social-button discord"
+                        href="https://discord.gg/h9e8dfWf2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Unirse a Discord
+                    </a>
+
+                </div>
+
+
+                <!-- KICK -->
+
+                <div class="social-card">
+
+                    <div class="social-icon">
+                        🟢
+                    </div>
+
+                    <h3>Kick</h3>
+
+                    <p>
+                        Mira los streams de TERCEO en directo.
+                    </p>
+
+                    <a
+                        class="social-button kick"
+                        href="https://kick.com/terceo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver Kick
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE -->
+
+        <section id="sobre">
+
+            <h2>🔥 Sobre TERCEO</h2>
+
+            <p class="subtitle">
+                Todo TERCEO en un solo lugar.
+            </p>
+
+            <div class="about">
+
+                <p>
+                    Bienvenido a la página web de TERCEO.
+                    Aquí puedes encontrar rápidamente sus principales
+                    plataformas, contenido y comunidad.
+                </p>
+
+                <div class="links">
+
+                    <a
+                        class="link-button"
+                        href="https://www.youtube.com/@terceo-k3s"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ▶️ YouTube
+                    </a>
+
+                    <a
+                        class="link-button"
+                        href="https://discord.gg/h9e8dfWf2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        💬 Discord
+                    </a>
+
+                    <a
+                        class="link-button"
+                        href="https://kick.com/terceo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        🟢 Kick
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 <strong>TERCEO</strong>
+        </p>
+
+        <p style="margin-top: 8px;">
+            Página web de comunidad.
+        </p>
+
+    </footer>
+
+</body>
+  </html>
